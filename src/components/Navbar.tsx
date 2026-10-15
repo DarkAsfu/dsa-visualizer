@@ -13,12 +13,17 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/90 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/90">
       <nav className="flex w-full items-center justify-between gap-4 px-4 py-2.5 lg:px-6">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-zinc-950 font-mono text-sm font-bold text-white dark:bg-white dark:text-zinc-950">
-            ∴
-          </span>
-          <span className="text-[15px] font-semibold tracking-tight">
-            DSA Visualizer
-          </span>
+          <img
+            src="/light.png"
+            alt="DSA Visualizer logo"
+            className="h-10 w-32 rounded-md object-contain dark:hidden"
+          />
+          <img
+            src="/dark.png"
+            alt=""
+            aria-hidden
+            className="hidden h-10 w-32 rounded-md object-contain dark:block"
+          />
           <span className="hidden rounded-full border border-zinc-200 px-2 py-0.5 font-mono text-[11px] text-zinc-500 sm:inline dark:border-zinc-800">
             {READY_COUNT}/{TOTAL_TOPICS}
           </span>

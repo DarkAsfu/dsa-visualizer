@@ -116,9 +116,9 @@ export const TOPIC_GROUPS: TopicGroup[] = [
       t("Heap (Min/Max)", "heap-ds", "Heapify steps.", "Phase 2", true),
       t("Trie", "trie", "Prefix tree for words.", "Phase 2", true),
       t("Segment Tree", "segment-tree", "Range queries.", "Phase 4", true),
-      t("Fenwick Tree", "fenwick-tree", "BIT prefix sums.", "Phase 4"),
-      t("LCA", "lca", "Lowest common ancestor.", "Phase 3"),
-      t("Tree Diameter & Views", "tree-diameter", "Height, diameter, top/bottom views.", "Phase 3"),
+      t("Fenwick Tree", "fenwick-tree", "BIT prefix sums.", "Phase 4", true),
+      t("LCA", "lca", "Lowest common ancestor.", "Phase 3", true),
+      t("Tree Diameter & Views", "tree-diameter", "Height, diameter, top/bottom views.", "Phase 3", true),
     ],
   },
   {
@@ -208,7 +208,7 @@ export const ALL_TOPICS: Record<string, Topic> = Object.fromEntries(
 export const ALL_SLUGS: string[] = Object.keys(ALL_TOPICS);
 
 // Slugs that already have a dedicated static page (dynamic route must skip them)
-export const STATIC_SLUGS = new Set(["sorting", "data-structures", "graph", "complexity", "recursion", "backtracking-basics", "bit-manipulation", "linear-search", "binary-search", "jump-search", "interpolation-search", "exponential-search", "ternary-search", "array-ops", "two-pointers", "sliding-window", "stack", "queue", "prefix-sum", "kadane", "dutch-flag", "kmp", "rabin-karp", "z-algorithm", "palindrome-anagram", "bubble-sort", "selection-sort", "insertion-sort", "merge-sort", "quick-sort", "heap-sort", "counting-sort", "radix-sort", "bucket-sort", "shell-sort", "sorting-race", "singly-linked-list", "reverse-linked-list", "cycle-detection", "doubly-linked-list", "merge-sorted-lists", "linked-list-middle", "bfs", "dfs", "graph-representation", "dijkstra", "bellman-ford", "floyd-warshall", "topological-sort", "prims", "kruskals", "union-find", "cycle-detection-graph", "kosaraju", "bipartite-check", "astar", "flood-fill", "tree-traversals", "bst", "avl-tree", "heap-ds", "trie", "segment-tree"]);
+export const STATIC_SLUGS = new Set(["sorting", "data-structures", "graph", "complexity", "recursion", "backtracking-basics", "bit-manipulation", "linear-search", "binary-search", "jump-search", "interpolation-search", "exponential-search", "ternary-search", "array-ops", "two-pointers", "sliding-window", "stack", "queue", "prefix-sum", "kadane", "dutch-flag", "kmp", "rabin-karp", "z-algorithm", "palindrome-anagram", "bubble-sort", "selection-sort", "insertion-sort", "merge-sort", "quick-sort", "heap-sort", "counting-sort", "radix-sort", "bucket-sort", "shell-sort", "sorting-race", "singly-linked-list", "reverse-linked-list", "cycle-detection", "doubly-linked-list", "merge-sorted-lists", "linked-list-middle", "bfs", "dfs", "graph-representation", "dijkstra", "bellman-ford", "floyd-warshall", "topological-sort", "prims", "kruskals", "union-find", "cycle-detection-graph", "kosaraju", "bipartite-check", "astar", "flood-fill", "tree-traversals", "bst", "avl-tree", "heap-ds", "trie", "segment-tree", "fenwick-tree", "lca", "tree-diameter"]);
 
 export const TOTAL_TOPICS = ALL_SLUGS.length;
 export const READY_COUNT = Object.values(ALL_TOPICS).filter(

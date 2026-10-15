@@ -24,7 +24,11 @@ function binaryLayout(nodes: TNodeSnap[], root: number): { pos: Map<number, { x:
   dfs(root, 0);
   let maxD = 0;
   for (const d of depth.values()) maxD = Math.max(maxD, d);
-  return { pos, W: Math.max(120, 60 + xi * DX), H: 68 + maxD * DY };
+  const contentW = 60 + xi * DX;
+  const W = Math.max(120, contentW, 620);
+  const shift = (W - contentW) / 2;
+  for (const p of pos.values()) p.x += shift;
+  return { pos, W, H: 104 + maxD * DY };
 }
 
 export function BinaryTreeSVG({
@@ -113,8 +117,8 @@ export function ArrayTreeSVG({
     for (const i of live) d = Math.max(d, levelOf(i));
     return Math.max(d, maxDepth ?? 0);
   }, [live, maxDepth]);
-  const W = Math.pow(2, depth) * 64 + 40;
-  const H = 76 + depth * DY;
+  const W = Math.max(Math.pow(2, depth) * 64 + 40, 620);
+  const H = 108 + depth * DY;
   const X = (i: number) => {
     const d = levelOf(i);
     const first = Math.pow(2, d) - 1;
@@ -202,7 +206,11 @@ export function TrieSVG({
     }
     let maxD = 0;
     for (const d of depth.values()) maxD = Math.max(maxD, d);
-    return { pos, W: Math.max(140, 68 + maxW * 56), H: 78 + maxD * DY };
+    const contentW = 68 + maxW * 56;
+    const W = Math.max(140, contentW, 620);
+    const shift = (W - contentW) / 2;
+    for (const p of pos.values()) p.x += shift;
+    return { pos, W, H: 112 + maxD * DY };
   }, [nodes, edges]);
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Trie">

@@ -94,10 +94,10 @@ export const STR = {
     soon: t("soon", "শীঘ্রই"),
     roadH: t("Roadmap", "রোডম্যাপ"),
     phases: [
-      { name: t("P1 · MVP", "P1 · MVP"), items: t("Sorting, Searching, Stack/Queue, Linked List, BST, BFS/DFS", "সর্টিং, সার্চিং, স্ট্যাক/কিউ, লিংকড লিস্ট, BST, BFS/DFS") },
-      { name: t("P2", "P2"), items: t("Heap, Trie, Dijkstra, MST, Union-Find, Recursion, Sliding Window", "হিপ, ট্রাই, ডাইকস্ট্রা, MST, ইউনিয়ন-ফাইন্ড, রিকার্শন, স্লাইডিং উইন্ডো") },
-      { name: t("P3", "P3"), items: t("DP, Backtracking, Greedy, Hashing, String matching", "DP, ব্যাকট্র্যাকিং, গ্রিডি, হ্যাশিং, স্ট্রিং ম্যাচিং") },
-      { name: t("P4", "P4"), items: t("AVL, Segment tree, SCC, Flow, Math", "AVL, সেগমেন্ট ট্রি, SCC, ফ্লো, গণিত") },
+      { name: t("P1 · MVP — done", "P1 · MVP — শেষ"), items: t("Sorting, Searching, Stack/Queue, Linked List, BST, BFS/DFS — all live.", "সর্টিং, সার্চিং, স্ট্যাক/কিউ, লিংকড লিস্ট, BST, BFS/DFS — সব লাইভ।") },
+      { name: t("P2 — done", "P2 — শেষ"), items: t("Heap, Trie, Dijkstra, MST, Union-Find, Recursion, Sliding Window — all live.", "হিপ, ট্রাই, ডাইকস্ট্রা, MST, ইউনিয়ন-ফাইন্ড, রিকার্শন, স্লাইডিং উইন্ডো — সব লাইভ।") },
+      { name: t("P3 — in progress", "P3 — চলছে"), items: t("Backtracking basics + string matching live. DP, Greedy, Hashing next.", "ব্যাকট্র্যাকিং বেসিক + স্ট্রিং ম্যাচিং লাইভ। DP, গ্রিডি, হ্যাশিং পরের।") },
+      { name: t("P4 — in progress", "P4 — চলছে"), items: t("AVL, Segment/Fenwick tree, SCC live. Flow, Math next.", "AVL, সেগমেন্ট/ফেনউইক ট্রি, SCC লাইভ। ফ্লো, গণিত পরের।") },
     ],
     how: [
       { t: t("Pick a topic", "টপিক বাছো"), d: t("Filter the index, open a visualizer.", "সূচি থেকে খুঁজে ভিজ্যুয়ালাইজার খোলো।") },
@@ -105,12 +105,12 @@ export const STR = {
       { t: t("Break it", "ভেঙে দেখো"), d: t("Feed your own input, watch edge cases.", "নিজের ইনপুট দাও, এজ কেস দেখো।") },
     ],
     rows: [
-      { desc: t("Bubble → Quick. Bar-level steps with pseudocode tracking.", "বাবল → কুইক। বার-লেভেল ধাপ ও সিউডোকোড ট্র্যাকিং।"), meta: t("5 algorithms · O(n²) → O(n log n)", "৫ অ্যালগরিদম · O(n²) → O(n log n)") },
-      { desc: t("Linear scan vs binary halving on sorted ranges.", "লিনিয়ার স্ক্যান বনাম বাইনারি হাফিং।"), meta: t("MVP · next up", "MVP · পরের টার্গেট") },
-      { desc: t("Push/pop, enqueue/dequeue visualization.", "পুশ/পপ, এনকিউ/ডিকিউ ভিজ্যুয়াল।"), meta: t("MVP", "MVP") },
-      { desc: t("Nodes, reverse, cycle detection.", "নোড, রিভার্স, সাইকেল ডিটেকশন।"), meta: t("MVP", "MVP") },
-      { desc: t("Insert, delete, search on tree.", "ট্রিতে ইনসার্ট, ডিলিট, সার্চ।"), meta: t("MVP", "MVP") },
-      { desc: t("Grid traversal — graph phase.", "গ্রিড ট্রাভার্সাল — গ্রাফ ধাপ।"), meta: t("MVP", "MVP") },
+      { desc: t("Bubble → Quick + 7 more. Bar-level steps with pseudocode tracking.", "বাবল → কুইক + আরও ৭। বার-লেভেল ধাপ ও সিউডোকোড ট্র্যাকিং।"), meta: t("12 algorithms · live", "১২ অ্যালগরিদম · লাইভ") },
+      { desc: t("Linear scan to ternary on sorted ranges.", "সাজানো রেঞ্জে লিনিয়ার থেকে টারনারি।"), meta: t("6 algorithms · live", "৬ অ্যালগরিদম · লাইভ") },
+      { desc: t("Push/pop, enqueue/dequeue, parentheses.", "পুশ/পপ, এনকিউ/ডিকিউ, বন্ধনী।"), meta: t("live", "লাইভ") },
+      { desc: t("Nodes, reverse, cycle, merge, middle.", "নোড, রিভার্স, সাইকেল, মার্জ, মাঝ।"), meta: t("6 topics · live", "৬ টপিক · লাইভ") },
+      { desc: t("Insert, delete, search + traversals, AVL.", "ইনসার্ট, ডিলিট, সার্চ + ট্রাভার্সাল, AVL।"), meta: t("9 topics · live", "৯ টপিক · লাইভ") },
+      { desc: t("Grid BFS/DFS + 13 weighted graph algorithms.", "গ্রিড BFS/DFS + ১৩ ওয়েটেড গ্রাফ অ্যালগরিদম।"), meta: t("16 topics · live", "১৬ টপিক · লাইভ") },
     ],
   },
   pages: {
@@ -661,6 +661,33 @@ export const STR = {
       intro: t(
         "Each node owns an interval. Query takes fully-inside nodes, skips outsiders, splits the rest.",
         "প্রতিটা নোড এক ব্যবধির মালিক। ভেতরের নোড নাও, বাইরের বাদ, বাকি ভাঙো।"
+      ),
+    },
+    "fenwick-tree": {
+      overline: t("8 · Trees — Phase 4", "৮ · ট্রি — ফেজ ৪"),
+      title: "Trees",
+      meta: t("BIT · lowbit jumps", "BIT · lowbit লাফ"),
+      intro: t(
+        "Prefix sums with tabular superpowers. Update climbs with += lowbit, query slides down with −= lowbit.",
+        "টেবিল-শক্তিতে প্রিফিক্স যোগ। আপডেট += lowbit দিয়ে ওঠে, জিজ্ঞাসা −= lowbit দিয়ে নামে।"
+      ),
+    },
+    lca: {
+      overline: t("8 · Trees — Phase 3", "৮ · ট্রি — ফেজ ৩"),
+      title: "Trees",
+      meta: t("last common on root paths", "মূল-পথে শেষ মিল"),
+      intro: t(
+        "Trace both root-to-node paths. The last shared node is the lowest common ancestor.",
+        "দুটো মূল-থেকে-নোড পথ আঁকো। শেষ ভাগ করা নোডই lowest common ancestor।"
+      ),
+    },
+    "tree-diameter": {
+      overline: t("8 · Trees — Phase 3", "৮ · ট্রি — ফেজ ৩"),
+      title: "Trees",
+      meta: t("double BFS · 4 views", "ডাবল BFS · ৪ ভিউ"),
+      intro: t(
+        "BFS from anywhere finds one end; BFS from there finds the diameter. Views read the tree from four sides.",
+        "যেকোনোখান থেকে BFS এক প্রান্ত দেয়; সেখান থেকে BFS ব্যাস দেয়। ভিউ চার দিক থেকে গাছ পড়ে।"
       ),
     },
   } as Record<string, { overline: Text; title: string; meta: Text; intro: Text }>,

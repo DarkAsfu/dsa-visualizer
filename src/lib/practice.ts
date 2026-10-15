@@ -68,4 +68,7 @@ export const PRACTICE: Record<string, Practice> = {
   "heap-ds": { level: "Medium", problems: ["Kth Largest", "Last Stone Weight", "Merge K Lists"] },
   trie: { level: "Medium", problems: ["Implement Trie", "Word Search II", "Replace Words"] },
   "segment-tree": { level: "Hard", problems: ["Range Sum Query", "Count Smaller", "Falling Squares"] },
+  "fenwick-tree": { level: "Hard", problems: ["Range Sum Query", "Count Smaller", "Reverse Pairs"] },
+  lca: { level: "Medium", problems: ["Lowest Common Ancestor", "LCA in BST", "Distance Between Nodes"] },
+  "tree-diameter": { level: "Medium", problems: ["Diameter of Tree", "Top View", "Bottom View", "Left View"] },
 };

@@ -697,3 +697,290 @@ export const SEG_CODE = [
 ];
 
 export const SEG_DEFAULT = [5, 2, 8, 6, 1, 4];
+
+/* ================= Fenwick tree ================= */
+
+export type FStep = {
+  bit: number[];
+  cur: number;
+  acc: number;
+  touched: number[];
+  desc: string;
+  codeLine: number;
+};
+
+const lowbit = (x: number) => x & -x;
+
+export function fenwickTrace(
+  arr: number[], op: "update" | "query", idx: number, delta: number, lang: Lang = "en"
+): { steps: FStep[]; bit: number[]; out: number } {
+  const bn = lang === "bn";
+  const n = arr.length;
+  const bit = Array(n + 1).fill(0);
+  for (let i = 0; i < n; i++) {
+    let j = i + 1;
+    while (j <= n) {
+      bit[j] += arr[i];
+      j += lowbit(j);
+    }
+  }
+  const steps: FStep[] = [{
+    bit: [...bit], cur: -1, acc: 0, touched: [],
+    desc: bn ? `BIT তৈরি · ${op === "update" ? `a[${idx}] += ${delta}` : `যোগ [0..${idx}]`}` : `BIT built · ${op === "update" ? `a[${idx}] += ${delta}` : `sum [0..${idx}]`}`,
+    codeLine: 0,
+  }];
+  const touched: number[] = [];
+  if (op === "update") {
+    let j = idx + 1;
+    while (j <= n) {
+      bit[j] += delta;
+      touched.push(j);
+      steps.push({
+        bit: [...bit], cur: j, acc: 0, touched: [...touched],
+        desc: bn ? `bit[${j}] += ${delta} → ${bit[j]} (lowbit ${lowbit(j)})` : `bit[${j}] += ${delta} → ${bit[j]} (lowbit ${lowbit(j)})`,
+        codeLine: 1,
+      });
+      j += lowbit(j);
+    }
+    steps.push({ bit: [...bit], cur: -1, acc: 0, touched: [...touched], desc: bn ? "আপডেট শেষ ✓" : "Update done ✓", codeLine: 3 });
+    return { steps, bit, out: delta };
+  }
+  let acc = 0;
+  let j = idx + 1;
+  while (j > 0) {
+    acc += bit[j];
+    touched.push(j);
+    steps.push({
+      bit: [...bit], cur: j, acc, touched: [...touched],
+      desc: bn ? `bit[${j}]=${bit[j]} যোগ → মোট ${acc}` : `add bit[${j}]=${bit[j]} → total ${acc}`,
+      codeLine: 2,
+    });
+    j -= lowbit(j);
+  }
+  steps.push({ bit: [...bit], cur: -1, acc, touched: [...touched], desc: bn ? `যোগফল = ${acc} ✓` : `Sum = ${acc} ✓`, codeLine: 3 });
+  return { steps, bit, out: acc };
+}
+
+export const FENWICK_CODE = [
+  "BIT from array",
+  "update: j += lowbit(j)",
+  "query: sum, j -= lowbit(j)",
+  "done",
+];
+
+export const FENWICK_DEFAULT = [5, 2, 8, 6, 1, 4];
+
+/* ================= LCA ================= */
+
+function bstPath(pool: Mut[], root: number, key: number): number[] {
+  const p: number[] = [];
+  let c = root;
+  while (c !== -1) {
+    p.push(c);
+    if (key === pool[c].val) break;
+    c = key < pool[c].val ? pool[c].left : pool[c].right;
+  }
+  return p;
+}
+
+function findByVal(pool: Mut[], root: number, key: number): number {
+  let c = root;
+  while (c !== -1) {
+    if (key === pool[c].val) return c;
+    c = key < pool[c].val ? pool[c].left : pool[c].right;
+  }
+  return -1;
+}
+
+export function lcaTrace(values: number[], a: number, b: number, lang: Lang = "en"): {
+  steps: TStep[]; pathA: number[]; pathB: number[]; lca: number; ok: boolean;
+} {
+  const bn = lang === "bn";
+  const { pool, root } = buildBase(values);
+  const steps: TStep[] = [];
+  const ia = findByVal(pool, root, a);
+  const ib = findByVal(pool, root, b);
+  if (ia === -1 || ib === -1) {
+    steps.push({
+      nodes: snapB(pool, false), root, current: -1, order: [], verdict: false,
+      desc: bn ? "দুটো key-ই গাছে থাকতে হবে" : "Both keys must be in the tree",
+      codeLine: 0,
+    });
+    return { steps, pathA: [], pathB: [], lca: -1, ok: false };
+  }
+  const pathA = bstPath(pool, root, a);
+  const pathB = bstPath(pool, root, b);
+  for (const id of pathA) {
+    steps.push({
+      nodes: snapB(pool, false), root, current: id, order: [...pathA.slice(0, pathA.indexOf(id) + 1)],
+      desc: bn ? `${a}-এর পথ: ${pool[id].val}` : `Path to ${a}: ${pool[id].val}`,
+      codeLine: 1,
+    });
+  }
+  for (const id of pathB) {
+    steps.push({
+      nodes: snapB(pool, false), root, current: id, order: [...pathB.slice(0, pathB.indexOf(id) + 1)],
+      desc: bn ? `${b}-এর পথ: ${pool[id].val}` : `Path to ${b}: ${pool[id].val}`,
+      codeLine: 1,
+    });
+  }
+  let lca = root;
+  for (let i = 0; i < Math.min(pathA.length, pathB.length); i++) {
+    if (pathA[i] === pathB[i]) lca = pathA[i];
+    else break;
+  }
+  steps.push({
+    nodes: snapB(pool, false), root, current: lca, order: [], verdict: true,
+    desc: bn ? `LCA = ${pool[lca].val} ✓` : `LCA = ${pool[lca].val} ✓`,
+    codeLine: 2,
+  });
+  return { steps, pathA, pathB, lca, ok: true };
+}
+
+export const LCA_CODE = [
+  "both keys in tree?",
+  "root-to-node paths",
+  "last common node = LCA",
+];
+
+/* ================= diameter ================= */
+
+function treeAdj(pool: Mut[]): Map<number, number[]> {
+  const m = new Map<number, number[]>();
+  pool.forEach((_, id) => m.set(id, []));
+  pool.forEach((nd, id) => {
+    if (nd.left !== -1) { m.get(id)!.push(nd.left); m.get(nd.left)!.push(id); }
+    if (nd.right !== -1) { m.get(id)!.push(nd.right); m.get(nd.right)!.push(id); }
+  });
+  return m;
+}
+
+function bfsFar(pool: Mut[], adj: Map<number, number[]>, src: number): { far: number; parent: Map<number, number>; order: number[] } {
+  const seen = new Set([src]);
+  const parent = new Map<number, number>();
+  const order = [src];
+  const q = [src];
+  while (q.length > 0) {
+    const u = q.shift()!;
+    for (const v of adj.get(u) ?? []) {
+      if (!seen.has(v)) {
+        seen.add(v);
+        parent.set(v, u);
+        order.push(v);
+        q.push(v);
+      }
+    }
+  }
+  return { far: order[order.length - 1], parent, order };
+}
+
+export function diameterTrace(values: number[], lang: Lang = "en"): {
+  steps: TStep[]; ends: [number, number]; path: number[]; length: number;
+} {
+  const bn = lang === "bn";
+  const { pool, root } = buildBase(values);
+  const steps: TStep[] = [];
+  const adj = treeAdj(pool);
+  const first = bfsFar(pool, adj, root === -1 ? 0 : root);
+  for (const id of first.order) {
+    steps.push({
+      nodes: snapB(pool, false), root, current: id, order: [],
+      desc: bn ? `প্রান্ত খুঁজি: ${pool[id].val}` : `Find one end: ${pool[id].val}`,
+      codeLine: 0,
+    });
+  }
+  const u = first.far;
+  const second = bfsFar(pool, adj, u);
+  for (const id of second.order) {
+    steps.push({
+      nodes: snapB(pool, false), root, current: id, order: [],
+      desc: bn ? `${pool[u].val} থেকে দূরতম: ${pool[id].val}` : `Farthest from ${pool[u].val}: ${pool[id].val}`,
+      codeLine: 1,
+    });
+  }
+  const v = second.far;
+  const path: number[] = [v];
+  let c = v;
+  while (c !== u) {
+    c = second.parent.get(c)!;
+    path.unshift(c);
+  }
+  steps.push({
+    nodes: snapB(pool, false), root, current: v, order: [...path], verdict: true,
+    desc: bn ? `ব্যাস = ${path.length - 1} ✓ (${path.map((x) => pool[x].val).join(" → ")})` : `Diameter = ${path.length - 1} ✓ (${path.map((x) => pool[x].val).join(" → ")})`,
+    codeLine: 2,
+  });
+  return { steps, ends: [u, v], path, length: path.length - 1 };
+}
+
+export const DIA_CODE = [
+  "BFS from root → end u",
+  "BFS from u → end v",
+  "u…v path = diameter",
+];
+
+/* ================= views ================= */
+
+export type ViewKind = "top" | "bottom" | "left" | "right";
+
+export function viewsTrace(values: number[], lang: Lang = "en"): {
+  steps: TStep[]; views: Record<ViewKind, number[]>;
+} {
+  const bn = lang === "bn";
+  const { pool, root } = buildBase(values);
+  const steps: TStep[] = [];
+  const hd = new Map<number, number>();
+  const lvl = new Map<number, number>();
+  const order: number[] = [];
+  if (root !== -1) {
+    const q = [root];
+    hd.set(root, 0);
+    lvl.set(root, 0);
+    while (q.length > 0) {
+      const u = q.shift()!;
+      order.push(u);
+      steps.push({
+        nodes: snapB(pool, false), root, current: u, order: [...order],
+        desc: bn ? `${pool[u].val}: hd=${hd.get(u)}, lvl=${lvl.get(u)}` : `${pool[u].val}: hd=${hd.get(u)}, lvl=${lvl.get(u)}`,
+        codeLine: 0,
+      });
+      const L = pool[u].left;
+      const R = pool[u].right;
+      if (L !== -1) { hd.set(L, hd.get(u)! - 1); lvl.set(L, lvl.get(u)! + 1); q.push(L); }
+      if (R !== -1) { hd.set(R, hd.get(u)! + 1); lvl.set(R, lvl.get(u)! + 1); q.push(R); }
+    }
+  }
+  const topM = new Map<number, number>();
+  const botM = new Map<number, number>();
+  for (const id of order) {
+    const h = hd.get(id)!;
+    if (!topM.has(h)) topM.set(h, id);
+    botM.set(h, id);
+  }
+  const leftM = new Map<number, number>();
+  const rightM = new Map<number, number>();
+  for (const id of order) {
+    const l = lvl.get(id)!;
+    if (!leftM.has(l)) leftM.set(l, id);
+    rightM.set(l, id);
+  }
+  const byHd = [...topM.keys()].sort((x, y) => x - y);
+  const byLvl = [...leftM.keys()].sort((x, y) => x - y);
+  const views: Record<ViewKind, number[]> = {
+    top: byHd.map((h) => pool[topM.get(h)!].val),
+    bottom: byHd.map((h) => pool[botM.get(h)!].val),
+    left: byLvl.map((l) => pool[leftM.get(l)!].val),
+    right: byLvl.map((l) => pool[rightM.get(l)!].val),
+  };
+  steps.push({
+    nodes: snapB(pool, false), root, current: -1, order: [...order], verdict: true,
+    desc: bn ? "চার ভিউ তৈরি ✓" : "Four views ready ✓",
+    codeLine: 1,
+  });
+  return { steps, views };
+}
+
+export const VIEWS_CODE = [
+  "BFS: tag hd + level",
+  "top/bottom per hd · left/right per level",
+];

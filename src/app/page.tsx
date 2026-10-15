@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { STR } from "@/lib/dict";
 import { useLang } from "@/lib/i18n";
-import { READY_COUNT, TOTAL_TOPICS } from "@/lib/topics";
+import { ALL_TOPICS, READY_COUNT, TOTAL_TOPICS } from "@/lib/topics";
 
 const MVP_HREFS = [
   "/sorting",
@@ -16,7 +16,7 @@ const MVP_HREFS = [
 
 const MVP_TITLES = ["Sorting", "Searching", "Stack / Queue", "Linked List", "BST", "BFS / DFS"];
 
-const MVP_READY = [true, true, false, false, false, false];
+const MVP_READY = MVP_HREFS.map((h) => ALL_TOPICS[h.slice(1)]?.ready ?? false);
 
 export default function Home() {
   const { T } = useLang();
@@ -46,7 +46,7 @@ export default function Home() {
           {T(H.cta1)}
         </Link>
         <Link
-          href="/complexity"
+          href="/data-structures"
           className="rounded-md border border-zinc-300 px-5 py-2.5 text-sm font-medium hover:border-zinc-500 dark:border-zinc-700 dark:hover:border-zinc-500"
         >
           {T(H.cta2)}

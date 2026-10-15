@@ -554,6 +554,33 @@ export const THEORY: Record<string, Theory> = {
       "Build O(n), point update O(log n).",
     ],
   },
+  "fenwick-tree": {
+    name: "Fenwick Tree",
+    blurb: "Prefix sums, tiny code.",
+    points: [
+      "bit[i] covers lowbit(i) elements.",
+      "Update: i += lowbit(i). Query: i −= lowbit(i).",
+      "Less memory than segment tree, sums only.",
+    ],
+  },
+  lca: {
+    name: "LCA",
+    blurb: "Deepest shared ancestor.",
+    points: [
+      "Root-to-node paths share a prefix.",
+      "Last common node = answer.",
+      "BST trick: split point where a/b diverge.",
+    ],
+  },
+  "tree-diameter": {
+    name: "Tree Diameter & Views",
+    blurb: "Longest path + four readings.",
+    points: [
+      "Double BFS gives the diameter ends.",
+      "Top/bottom = first/last per horizontal distance.",
+      "Left/right = first/last per level.",
+    ],
+  },
 };
 
 export const THEORY_BN: Record<string, { blurb: string; points: string[] }> = {
@@ -1043,6 +1070,30 @@ export const THEORY_BN: Record<string, { blurb: string; points: string[] }> = {
       "[l,r] নোড সমষ্টি রাখে (এখানে যোগ)।",
       "জিজ্ঞাসা: ভেতর নাও, বাইর বাদ, আংশিক ভাঙো।",
       "বানানো O(n), পয়েন্ট আপডেট O(log n)।",
+    ],
+  },
+  "fenwick-tree": {
+    blurb: "প্রিফিক্স যোগ, ছোট কোড।",
+    points: [
+      "bit[i] lowbit(i)-টা উপাদান ঢাকে।",
+      "আপডেট: i += lowbit(i)। জিজ্ঞাসা: i −= lowbit(i)।",
+      "সেগমেন্ট ট্রির চেয়ে কম মেমরি, শুধু যোগ।",
+    ],
+  },
+  lca: {
+    blurb: "গভীরতম ভাগ করা পূর্বপুরুষ।",
+    points: [
+      "মূল-থেকে-নোড পথে মিল-শুরু থাকে।",
+      "শেষ মিল-নোড = উত্তর।",
+      "BST কৌশল: যেখানে a/b আলাদা হয়।",
+    ],
+  },
+  "tree-diameter": {
+    blurb: "দীর্ঘতম পথ + চার পাঠ।",
+    points: [
+      "ডাবল BFS ব্যাসের প্রান্ত দেয়।",
+      "টপ/বটম = প্রতি horizontal দূরত্বে প্রথম/শেষ।",
+      "লেফট/রাইট = প্রতি স্তরে প্রথম/শেষ।",
     ],
   },
 };
