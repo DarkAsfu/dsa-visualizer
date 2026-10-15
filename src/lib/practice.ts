@@ -71,4 +71,9 @@ export const PRACTICE: Record<string, Practice> = {
   "fenwick-tree": { level: "Hard", problems: ["Range Sum Query", "Count Smaller", "Reverse Pairs"] },
   lca: { level: "Medium", problems: ["Lowest Common Ancestor", "LCA in BST", "Distance Between Nodes"] },
   "tree-diameter": { level: "Medium", problems: ["Diameter of Tree", "Top View", "Bottom View", "Left View"] },
+  "circular-queue": { level: "Easy", problems: ["Design Circular Queue", "Design Circular Deque"] },
+  "monotonic-stack": { level: "Medium", problems: ["Next Greater Element", "Daily Temperatures", "Stock Span"] },
+  "infix-postfix": { level: "Medium", problems: ["Infix to Postfix", "Evaluate Postfix", "Basic Calculator"] },
+  "next-greater": { level: "Medium", problems: ["Next Greater Element I", "Next Greater Element II", "Daily Temperatures"] },
+  "lru-cache": { level: "Medium", problems: ["LRU Cache", "LFU Cache", "Design Browser History"] },
 };

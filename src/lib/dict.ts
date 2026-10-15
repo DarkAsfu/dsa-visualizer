@@ -690,6 +690,51 @@ export const STR = {
         "যেকোনোখান থেকে BFS এক প্রান্ত দেয়; সেখান থেকে BFS ব্যাস দেয়। ভিউ চার দিক থেকে গাছ পড়ে।"
       ),
     },
+    "circular-queue": {
+      overline: t("6 · Stack & Queue — Phase 2", "৬ · স্ট্যাক ও কিউ — ফেজ ২"),
+      title: "Stack & Queue",
+      meta: t("ring buffer · mod k", "রিং বাফার · mod k"),
+      intro: t(
+        "The array's end connects back to its start. Front and rear chase each other with modulo arithmetic.",
+        "অ্যারের শেষ মাথা শুরুর সাথে জোড়া। front আর rear মডুলো গণিতে তাড়া করে।"
+      ),
+    },
+    "monotonic-stack": {
+      overline: t("6 · Stack & Queue — Phase 3", "৬ · স্ট্যাক ও কিউ — ফেজ ৩"),
+      title: "Stack & Queue",
+      meta: t("increasing stack", "বাড়ন্ত স্ট্যাক"),
+      intro: t(
+        "Pop everything bigger before pushing. The stack stays sorted — future queries get instant answers.",
+        "ঢোকানোর আগে বড় সব ফেলো। স্ট্যাক সাজানো থাকে — ভবিষ্যৎ প্রশ্নে instant উত্তর।"
+      ),
+    },
+    "infix-postfix": {
+      overline: t("6 · Stack & Queue — Phase 2", "৬ · স্ট্যাক ও কিউ — ফেজ ২"),
+      title: "Stack & Queue",
+      meta: t("shunting-yard", "শান্টিং-ইয়ার্ড"),
+      intro: t(
+        "Numbers go straight out; operators wait their precedence turn. Parentheses open and flush scopes.",
+        "সংখ্যা সোজা বাইরে; অপারেটর প্রাধান্য-পালায় অপেক্ষা করে। বন্ধনী স্কোপ খোলে আর খালাস করে।"
+      ),
+    },
+    "next-greater": {
+      overline: t("6 · Stack & Queue — Phase 2", "৬ · স্ট্যাক ও কিউ — ফেজ ২"),
+      title: "Stack & Queue",
+      meta: t("O(n) right-to-left", "O(n) ডান-থেকে-বাম"),
+      intro: t(
+        "Scan from the right, keep candidates on a stack. Smaller ones can never be anyone's answer — pop them.",
+        "ডান থেকে স্ক্যান করো, প্রার্থী স্ট্যাকে রাখো। ছোটরা কারো উত্তর হতে পারবে না — ফেলো।"
+      ),
+    },
+    "lru-cache": {
+      overline: t("6 · Stack & Queue — Phase 3", "৬ · স্ট্যাক ও কিউ — ফেজ ৩"),
+      title: "Stack & Queue",
+      meta: t("evict the stalest", "পুরনোকে বাদ দাও"),
+      intro: t(
+        "Touch moves a key to the front; the tail is always the stalest. Full cache evicts the tail first.",
+        "ছোঁয়া key-কে সামনে আনে; লেজ সবসময় পুরনো। ভর্তি ক্যাশ আগে লেজ বাদ দেয়।"
+      ),
+    },
   } as Record<string, { overline: Text; title: string; meta: Text; intro: Text }>,
   common: {
     play: t("▶ Play", "▶ প্লে"),

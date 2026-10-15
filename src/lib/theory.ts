@@ -581,6 +581,51 @@ export const THEORY: Record<string, Theory> = {
       "Left/right = first/last per level.",
     ],
   },
+  "circular-queue": {
+    name: "Circular Queue",
+    blurb: "Ring buffer, no shifting.",
+    points: [
+      "rear = (rear+1) % k, front = (front+1) % k.",
+      "Full when count == k (or rear+1 == front).",
+      "Fixed memory, O(1) ops — schedulers love it.",
+    ],
+  },
+  "monotonic-stack": {
+    name: "Monotonic Stack",
+    blurb: "Sorted stack, instant queries.",
+    points: [
+      "Pop while top breaks the order, then push.",
+      "Each element pushed + popped once: O(n).",
+      "Powers NGE, stock span, histogram area.",
+    ],
+  },
+  "infix-postfix": {
+    name: "Infix to Postfix",
+    blurb: "Precedence decides the order.",
+    points: [
+      "Numbers print immediately.",
+      "Pop operators with ≥ precedence before pushing.",
+      ") flushes until (, ( gets dropped.",
+    ],
+  },
+  "next-greater": {
+    name: "Next Greater Element",
+    blurb: "Right-to-left, one pass.",
+    points: [
+      "Stack holds decreasing candidates.",
+      "Pop ≤ x — they block nobody's view.",
+      "Answer = stack top, or −1 when empty.",
+    ],
+  },
+  "lru-cache": {
+    name: "LRU Cache",
+    blurb: "Forget the stalest first.",
+    points: [
+      "Get/put moves the key to MRU front.",
+      "Evict from the LRU tail when full.",
+      "Hashmap + order list = O(1) both.",
+    ],
+  },
 };
 
 export const THEORY_BN: Record<string, { blurb: string; points: string[] }> = {
@@ -1094,6 +1139,46 @@ export const THEORY_BN: Record<string, { blurb: string; points: string[] }> = {
       "ডাবল BFS ব্যাসের প্রান্ত দেয়।",
       "টপ/বটম = প্রতি horizontal দূরত্বে প্রথম/শেষ।",
       "লেফট/রাইট = প্রতি স্তরে প্রথম/শেষ।",
+    ],
+  },
+  "circular-queue": {
+    blurb: "রিং বাফার, সরানো নেই।",
+    points: [
+      "rear = (rear+1) % k, front = (front+1) % k।",
+      "count == k হলেই ভর্তি।",
+      "নির্দিষ্ট মেমরি, O(1) অপ — শিডিউলারের প্রিয়।",
+    ],
+  },
+  "monotonic-stack": {
+    blurb: "সাজানো স্ট্যাক, instant প্রশ্ন।",
+    points: [
+      "ক্রম ভাঙা top ফেলো, তারপর ঠেলো।",
+      "প্রতিটা একবার ঢোকে + বেরোয়: O(n)।",
+      "NGE, স্টক স্প্যান, হিস্টোগ্রাম ক্ষেত্রফলের শক্তি।",
+    ],
+  },
+  "infix-postfix": {
+    blurb: "প্রাধান্যই ক্রম ঠিক করে।",
+    points: [
+      "সংখ্যা সাথে সাথে ছাপে।",
+      "≥ প্রাধান্য অপারেটর ফেলে তারপর ঠেলো।",
+      ") পেলে ( পর্যন্ত খালাস, ( বাদ।",
+    ],
+  },
+  "next-greater": {
+    blurb: "ডান-থেকে-বাম, এক পাস।",
+    points: [
+      "স্ট্যাকে কমন্ত প্রার্থী থাকে।",
+      "≤ x ফেলো — এরা কারো দৃশ্য আটকায় না।",
+      "উত্তর = স্ট্যাক-top, খালি হলে −১।",
+    ],
+  },
+  "lru-cache": {
+    blurb: "পুরনোকে আগে ভোলো।",
+    points: [
+      "Get/put key-কে MRU সামনে আনে।",
+      "ভর্তি হলে LRU লেজ বাদ।",
+      "হ্যাশম্যাপ + ক্রম-তালিকা = দুটোই O(1)।",
     ],
   },
 };
