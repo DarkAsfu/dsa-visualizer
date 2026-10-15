@@ -626,6 +626,33 @@ export const THEORY: Record<string, Theory> = {
       "Hashmap + order list = O(1) both.",
     ],
   },
+  "hash-table": {
+    name: "Hash Table",
+    blurb: "O(1) by arithmetic.",
+    points: [
+      "bucket = hash(key) % m.",
+      "Collisions chain — longest chain rules worst case.",
+      "Load factor n/m past ~0.7 → resize ×2.",
+    ],
+  },
+  "hash-functions": {
+    name: "Hash Functions",
+    blurb: "Spread is everything.",
+    points: [
+      "Weak hashes cluster (anagrams collide).",
+      "djb2/FNV mix every byte — avalanche.",
+      "Uniform buckets → short chains → fast table.",
+    ],
+  },
+  "bloom-filter": {
+    name: "Bloom Filter",
+    blurb: "Tiny maybe-machine.",
+    points: [
+      "m bits, k hashes, zero storage of keys.",
+      "No false negatives, some false positives.",
+      "More bits / tuned k → smaller error.",
+    ],
+  },
 };
 
 export const THEORY_BN: Record<string, { blurb: string; points: string[] }> = {
@@ -1179,6 +1206,30 @@ export const THEORY_BN: Record<string, { blurb: string; points: string[] }> = {
       "Get/put key-কে MRU সামনে আনে।",
       "ভর্তি হলে LRU লেজ বাদ।",
       "হ্যাশম্যাপ + ক্রম-তালিকা = দুটোই O(1)।",
+    ],
+  },
+  "hash-table": {
+    blurb: "পাটিগণিতে O(1)।",
+    points: [
+      "bucket = hash(key) % m।",
+      "সংঘর্ষ চেইনে — লম্বা চেইন ওয়ার্স্ট কেস বানায়।",
+      "লোড ~০.৭ পেরোলেই ×২ বড় করো।",
+    ],
+  },
+  "hash-functions": {
+    blurb: "ছড়ানোই সব।",
+    points: [
+      "দুর্বল হ্যাশ গাদা করে (anagram মিলে)।",
+      "djb2/FNV প্রতি বাইট মেশায় — avalanche।",
+      "সমান বাকেট → ছোট চেইন → দ্রুত টেবিল।",
+    ],
+  },
+  "bloom-filter": {
+    blurb: "ক্ষুদে হয়তো-যন্ত্র।",
+    points: [
+      "m বিট, k হ্যাশ, key রাখে না।",
+      "ভুল-নেতি নেই, কিছু ভুল-পজিটিভ।",
+      "বেশি বিট / ঠিক k → কম ভুল।",
     ],
   },
 };

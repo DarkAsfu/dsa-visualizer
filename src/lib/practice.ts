@@ -76,4 +76,7 @@ export const PRACTICE: Record<string, Practice> = {
   "infix-postfix": { level: "Medium", problems: ["Infix to Postfix", "Evaluate Postfix", "Basic Calculator"] },
   "next-greater": { level: "Medium", problems: ["Next Greater Element I", "Next Greater Element II", "Daily Temperatures"] },
   "lru-cache": { level: "Medium", problems: ["LRU Cache", "LFU Cache", "Design Browser History"] },
+  "hash-table": { level: "Easy", problems: ["Two Sum", "Group Anagrams", "Design HashMap"] },
+  "hash-functions": { level: "Easy", problems: ["Ransom Note", "Isomorphic Strings", "Happy Number"] },
+  "bloom-filter": { level: "Hard", problems: ["Design Skiplist", "Count Primes", "Username Check"] },
 };

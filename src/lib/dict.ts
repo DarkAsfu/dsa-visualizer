@@ -735,6 +735,33 @@ export const STR = {
         "ছোঁয়া key-কে সামনে আনে; লেজ সবসময় পুরনো। ভর্তি ক্যাশ আগে লেজ বাদ দেয়।"
       ),
     },
+    "hash-table": {
+      overline: t("7 · Hashing — Phase 3", "৭ · হ্যাশিং — ফেজ ৩"),
+      title: "Hashing",
+      meta: t("hash → bucket → chain", "হ্যাশ → বাকেট → চেইন"),
+      intro: t(
+        "Hash the key, mod into a bucket, chain collisions. Good spread keeps every chain short.",
+        "key হ্যাশ করো, mod দিয়ে বাকেটে ফেলো, সংঘর্ষ চেইনে। ভালো ছড়ানো চেইন ছোট রাখে।"
+      ),
+    },
+    "hash-functions": {
+      overline: t("7 · Hashing — Phase 3", "৭ · হ্যাশিং — ফেজ ৩"),
+      title: "Hashing",
+      meta: t("sum vs djb2 vs FNV", "সাম বনাম djb2 বনাম FNV"),
+      intro: t(
+        "Same word, four hashes. Watch weak sums crowd buckets while mixers spread them thin.",
+        "এক শব্দ, চার হ্যাশ। দুর্বল যোগ বাকেট ভরায়, মিক্সার ছড়িয়ে দেয় — দেখো।"
+      ),
+    },
+    "bloom-filter": {
+      overline: t("7 · Hashing — Phase 4", "৭ · হ্যাশিং — ফেজ ৪"),
+      title: "Hashing",
+      meta: t("maybe present, never wrong-no", "হয়তো আছে, না-তে ভুল নয়"),
+      intro: t(
+        "k hashes paint shared bits. All set means maybe; one zero means definitely absent.",
+        "k হ্যাশ ভাগ-বিট রাঙায়। সব সেট মানে হয়তো; এক শূন্য মানে নিশ্চিত নেই।"
+      ),
+    },
   } as Record<string, { overline: Text; title: string; meta: Text; intro: Text }>,
   common: {
     play: t("▶ Play", "▶ প্লে"),

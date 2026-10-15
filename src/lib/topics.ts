@@ -102,9 +102,9 @@ export const TOPIC_GROUPS: TopicGroup[] = [
   {
     title: "7. Hashing",
     topics: [
-      t("Hash Table", "hash-table", "Chaining vs open addressing.", "Phase 3"),
-      t("Hash Functions", "hash-functions", "How hashing works.", "Phase 3"),
-      t("Bloom Filter", "bloom-filter", "Probabilistic membership.", "Phase 4"),
+      t("Hash Table", "hash-table", "Chaining vs open addressing.", "Phase 3", true),
+      t("Hash Functions", "hash-functions", "How hashing works.", "Phase 3", true),
+      t("Bloom Filter", "bloom-filter", "Probabilistic membership.", "Phase 4", true),
     ],
   },
   {
@@ -208,7 +208,7 @@ export const ALL_TOPICS: Record<string, Topic> = Object.fromEntries(
 export const ALL_SLUGS: string[] = Object.keys(ALL_TOPICS);
 
 // Slugs that already have a dedicated static page (dynamic route must skip them)
-export const STATIC_SLUGS = new Set(["sorting", "data-structures", "graph", "complexity", "recursion", "backtracking-basics", "bit-manipulation", "linear-search", "binary-search", "jump-search", "interpolation-search", "exponential-search", "ternary-search", "array-ops", "two-pointers", "sliding-window", "stack", "queue", "prefix-sum", "kadane", "dutch-flag", "kmp", "rabin-karp", "z-algorithm", "palindrome-anagram", "bubble-sort", "selection-sort", "insertion-sort", "merge-sort", "quick-sort", "heap-sort", "counting-sort", "radix-sort", "bucket-sort", "shell-sort", "sorting-race", "singly-linked-list", "reverse-linked-list", "cycle-detection", "doubly-linked-list", "merge-sorted-lists", "linked-list-middle", "bfs", "dfs", "graph-representation", "dijkstra", "bellman-ford", "floyd-warshall", "topological-sort", "prims", "kruskals", "union-find", "cycle-detection-graph", "kosaraju", "bipartite-check", "astar", "flood-fill", "tree-traversals", "bst", "avl-tree", "heap-ds", "trie", "segment-tree", "fenwick-tree", "lca", "tree-diameter", "circular-queue", "monotonic-stack", "infix-postfix", "next-greater", "lru-cache"]);
+export const STATIC_SLUGS = new Set(["sorting", "data-structures", "graph", "complexity", "recursion", "backtracking-basics", "bit-manipulation", "linear-search", "binary-search", "jump-search", "interpolation-search", "exponential-search", "ternary-search", "array-ops", "two-pointers", "sliding-window", "stack", "queue", "prefix-sum", "kadane", "dutch-flag", "kmp", "rabin-karp", "z-algorithm", "palindrome-anagram", "bubble-sort", "selection-sort", "insertion-sort", "merge-sort", "quick-sort", "heap-sort", "counting-sort", "radix-sort", "bucket-sort", "shell-sort", "sorting-race", "singly-linked-list", "reverse-linked-list", "cycle-detection", "doubly-linked-list", "merge-sorted-lists", "linked-list-middle", "bfs", "dfs", "graph-representation", "dijkstra", "bellman-ford", "floyd-warshall", "topological-sort", "prims", "kruskals", "union-find", "cycle-detection-graph", "kosaraju", "bipartite-check", "astar", "flood-fill", "tree-traversals", "bst", "avl-tree", "heap-ds", "trie", "segment-tree", "fenwick-tree", "lca", "tree-diameter", "circular-queue", "monotonic-stack", "infix-postfix", "next-greater", "lru-cache", "hash-table", "hash-functions", "bloom-filter"]);
 
 export const TOTAL_TOPICS = ALL_SLUGS.length;
 export const READY_COUNT = Object.values(ALL_TOPICS).filter(
