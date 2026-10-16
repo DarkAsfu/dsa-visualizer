@@ -762,6 +762,249 @@ export const STR = {
         "k হ্যাশ ভাগ-বিট রাঙায়। সব সেট মানে হয়তো; এক শূন্য মানে নিশ্চিত নেই।"
       ),
     },
+    "dp-intro": {
+      overline: t("10 · Dynamic Programming — Phase 3", "১০ · ডাইনামিক প্রোগ্রামিং — ফেজ ৩"),
+      title: "Dynamic Programming",
+      meta: t("memo hits vs recompute", "মেমো হিট বনাম পুনঃহিসাব"),
+      intro: t(
+        "Same subproblem twice? Save the answer. Watch fib(n) reuse memo instead of recomputing.",
+        "একই সাবপ্রবলেম দুবার? উত্তর তুলে রাখো। দেখো fib(n) কীভাবে memo ব্যবহার করে।"
+      ),
+    },
+    "fibonacci-dp": {
+      overline: t("10 · Dynamic Programming — Phase 3", "১০ · ডাইনামিক প্রোগ্রামিং — ফেজ ৩"),
+      title: "Dynamic Programming",
+      meta: t("O(2ⁿ) naive vs O(n) table", "O(2ⁿ) naive বনাম O(n) টেবিল"),
+      intro: t(
+        "Build fib bottom-up: dp[i] = dp[i−1] + dp[i−2]. Linear work beats the exponential tree.",
+        "নিচ থেকে fib বানাও: dp[i] = dp[i−1] + dp[i−2]। রৈখিক কাজ সূচকীয় গাছকে হারায়।"
+      ),
+    },
+    knapsack: {
+      overline: t("10 · Dynamic Programming — Phase 3", "১০ · ডাইনামিক প্রোগ্রামিং — ফেজ ৩"),
+      title: "Dynamic Programming",
+      meta: t("take or skip · O(m·cap)", "নাও বা বাদ · O(m·cap)"),
+      intro: t(
+        "Each cell asks: take this item or skip it? Fill the table, then walk back for the set.",
+        "প্রতিটা ঘর জিজ্ঞেস করে: জিনিসটা নেবো না বাদ? টেবিল ভরো, তারপর সেট খুঁজে ফেরো।"
+      ),
+    },
+    lcs: {
+      overline: t("10 · Dynamic Programming — Phase 3", "১০ · ডাইনামিক প্রোগ্রামিং — ফেজ ৩"),
+      title: "Dynamic Programming",
+      meta: t("match diag+1, else max", "মিলে কর্ণ+১, নইলে max"),
+      intro: t(
+        "Matching letters extend the diagonal; mismatches carry the best from top or left.",
+        "মিল-অক্ষর কর্ণ বাড়ায়; অমিল উপর বা বামের সেরাটা বয়ে আনে।"
+      ),
+    },
+    lis: {
+      overline: t("10 · Dynamic Programming — Phase 3", "১০ · ডাইনামিক প্রোগ্রামিং — ফেজ ৩"),
+      title: "Dynamic Programming",
+      meta: t("extend best smaller · O(n²)", "সেরা ছোটকে বাড়াও · O(n²)"),
+      intro: t(
+        "dp[i] extends the best smaller ending before it. The answer is the max over dp.",
+        "dp[i] তার আগের সেরা ছোট সমাপ্তিকে বাড়ায়। উত্তর dp-এর সর্বোচ্চ।"
+      ),
+    },
+    "edit-distance": {
+      overline: t("10 · Dynamic Programming — Phase 3", "১০ · ডাইনামিক প্রোগ্রামিং — ফেজ ৩"),
+      title: "Dynamic Programming",
+      meta: t("insert · delete · replace", "ঢোকাও · মুছো · বদলাও"),
+      intro: t(
+        "Turn one word into another, cheapest first. Each cell picks the cheapest of three edits.",
+        "এক শব্দকে আরেকটা বানাও, সস্তায়। প্রতিটা ঘর তিন এডিটের সস্তাটা বেছে।"
+      ),
+    },
+    "coin-change": {
+      overline: t("10 · Dynamic Programming — Phase 3", "১০ · ডাইনামিক প্রোগ্রামিং — ফেজ ৩"),
+      title: "Dynamic Programming",
+      meta: t("min coins per amount", "প্রতি অঙ্কে সর্বনিম্ন কয়েন"),
+      intro: t(
+        "For each amount, try every coin: dp[amt] = 1 + min(dp[amt−c]). Unreachable stays ∞.",
+        "প্রতি অঙ্কে সব কয়েন চেষ্টা করো: dp[amt] = 1 + min(dp[amt−c])। অসম্ভব ∞ থাকে।"
+      ),
+    },
+    "subset-sum": {
+      overline: t("10 · Dynamic Programming — Phase 3", "১০ · ডাইনামিক প্রোগ্রামিং — ফেজ ৩"),
+      title: "Dynamic Programming",
+      meta: t("reachable? T/F table", "সম্ভব? T/F টেবিল"),
+      intro: t(
+        "Can these numbers make the target? Each sum is reachable by skipping or taking.",
+        "এই সংখ্যায় টার্গেট বানানো যায়? প্রতিটা যোগ বাদ বা নেওয়ায় সম্ভব হয়।"
+      ),
+    },
+    "grid-paths": {
+      overline: t("10 · Dynamic Programming — Phase 3", "১০ · ডাইনামিক প্রোগ্রামিং — ফেজ ৩"),
+      title: "Dynamic Programming",
+      meta: t("top + left counting", "উপর + বাম গণনা"),
+      intro: t(
+        "Move only right or down. Every cell counts top paths plus left paths.",
+        "শুধু ডান বা নিচে চলো। প্রতিটা ঘর উপর-পথ যোগ বাম-পথ গোনে।"
+      ),
+    },
+    "activity-selection": {
+      overline: t("11 · Greedy — Phase 3", "১১ · গ্রিডি — ফেজ ৩"),
+      title: "Greedy",
+      meta: t("earliest finish wins", "আগে-শেষ জেতে"),
+      intro: t(
+        "Sort by finish time, then take every activity that starts after the last pick. Never look back.",
+        "শেষ-সময় ধরে সাজাও, শেষ-বাছার পরে শুরু হওয়া সব নাও। পেছনে তাকিও না।"
+      ),
+    },
+    "fractional-knapsack": {
+      overline: t("11 · Greedy — Phase 3", "১১ · গ্রিডি — ফেজ ৩"),
+      title: "Greedy",
+      meta: t("density first · fraction ok", "ঘনত্ব আগে · ভগ্নাংশ চলে"),
+      intro: t(
+        "Densest value-per-weight first. Take whole items while they fit, then a fraction of the next.",
+        "ঘন মান-প্রতি-ওজন আগে। আঁটে যত পুরো নাও, তারপর পরেরটার ভগ্নাংশ।"
+      ),
+    },
+    "huffman-coding": {
+      overline: t("11 · Greedy — Phase 4", "১১ · গ্রিডি — ফেজ ৪"),
+      title: "Greedy",
+      meta: t("merge two smallest", "ক্ষুদ্রতম দুটো জোড়া"),
+      intro: t(
+        "Count letters, then merge the two rarest again and again. Frequent letters earn short codes.",
+        "অক্ষর গোনো, তারপর বিরলতম দুটো বারবার জোড়া দাও। ঘন অক্ষর ছোট কোড পায়।"
+      ),
+    },
+    "merge-intervals": {
+      overline: t("11 · Greedy — Phase 2", "১১ · গ্রিডি — ফেজ ২"),
+      title: "Greedy",
+      meta: t("sort + one sweep", "সাজাও + এক ঝাঁটা"),
+      intro: t(
+        "Sort by start. Overlap extends the current interval; a gap pushes it out and moves on.",
+        "শুরু ধরে সাজাও। মিললে চলমান ব্যবধান বাড়ে; ফাঁক পেলে বাইরে রেখে এগোও।"
+      ),
+    },
+    "closest-pair": {
+      overline: t("12 · Divide & Conquer — Phase 4", "১২ · ডিভাইড ও কনকার — ফেজ ৪"),
+      title: "Divide & Conquer",
+      meta: t("split · strip · O(n log n)", "ভাগ · স্ট্রিপ · O(n log n)"),
+      intro: t(
+        "Split by x, conquer each half, then check only the strip — each point meets ≤7 neighbors.",
+        "x দিয়ে ভাগ করো, দুই অর্ধেক জয় করো, তারপর শুধু স্ট্রিপ দেখো — প্রতি পয়েন্টে ≤৭ প্রতিবেশী।"
+      ),
+    },
+    karatsuba: {
+      overline: t("12 · Divide & Conquer — Phase 4", "১২ · ডিভাইড ও কনকার — ফেজ ৪"),
+      title: "Divide & Conquer",
+      meta: t("3 half-multis beat 4", "৩ অর্ধ-গুণ ৪-কে হারায়"),
+      intro: t(
+        "Split numbers in half: three small multiplies plus shifts replace four. Fewer mults, same product.",
+        "সংখ্যা অর্ধেক ভাঙো: চারটার বদলে তিন ছোট গুণ + শিফট। কম গুণ, একই গুণফল।"
+      ),
+    },
+    "n-queens": {
+      overline: t("13 · Backtracking — Phase 3", "১৩ · ব্যাকট্র্যাকিং — ফেজ ৩"),
+      title: "Backtracking",
+      meta: t("one queen per row · undo", "প্রতি সারিতে এক কুইন · undo"),
+      intro: t(
+        "One queen per row. Safe? Go deeper. Stuck? Remove and try the next column.",
+        "প্রতি সারিতে এক কুইন। নিরাপদ? গভীরে যাও। আটকে? সরিয়ে পরের কলাম।"
+      ),
+    },
+    "sudoku-solver": {
+      overline: t("13 · Backtracking — Phase 3", "১৩ · ব্যাকট্র্যাকিং — ফেজ ৩"),
+      title: "Backtracking",
+      meta: t("emptiest cell first", "খালি-ঘর আগে"),
+      intro: t(
+        "Always fill the most constrained empty cell. Dead end? Erase and try the next digit.",
+        "সবচেয়ে বাঁধা খালি ঘর আগে ভরো। dead end? মুছে পরের অঙ্ক।"
+      ),
+    },
+    "rat-in-maze": {
+      overline: t("13 · Backtracking — Phase 3", "১৩ · ব্যাকট্র্যাকিং — ফেজ ৩"),
+      title: "Backtracking",
+      meta: t("DFS · step in, step back", "DFS · ঢোকো, ফেরো"),
+      intro: t(
+        "Walk free cells depth-first. Dead end means unvisit and step back — every route gets counted.",
+        "খালি ঘরে গভীরে হাঁটো। dead end মানে unvisit করে ফেরো — সব পথ গোনা হয়।"
+      ),
+    },
+    "subsets-permutations": {
+      overline: t("13 · Backtracking — Phase 3", "১৩ · ব্যাকট্র্যাকিং — ফেজ ৩"),
+      title: "Backtracking",
+      meta: t("2ⁿ sets · n! orders", "2ⁿ সেট · n! ক্রম"),
+      intro: t(
+        "Subsets: take it or skip it. Permutations: fix each position in turn. Both are choose-explore-unchoose.",
+        "সাবসেট: নাও বা বাদ। বিন্যাস: প্রতিটা ঘর পালা করে বসাও। দুটোই choose-explore-unchoose।"
+      ),
+    },
+    "word-search": {
+      overline: t("13 · Backtracking — Phase 3", "১৩ · ব্যাকট্র্যাকিং — ফেজ ৩"),
+      title: "Backtracking",
+      meta: t("letter DFS + visited", "অক্ষর DFS + visited"),
+      intro: t(
+        "Start at every first letter, chase the next one through 4 neighbors. Wrong trail? Backtrack.",
+        "প্রতিটা প্রথম অক্ষর থেকে শুরু, পরেরটা ৪ প্রতিবেশীতে খুঁজো। ভুল পথ? ব্যাকট্র্যাক।"
+      ),
+    },
+    "gcd-lcm": {
+      overline: t("14 · Math — Phase 2", "১৪ · গণিত — ফেজ ২"),
+      title: "Math & Number Theory",
+      meta: t("remainders shrink fast", "ভাগশেষ দ্রুত ছোটে"),
+      intro: t(
+        "gcd(a, b) = gcd(b, a mod b) until zero. The last non-zero remainder wins; LCM follows.",
+        "gcd(a, b) = gcd(b, a mod b), শূন্য পর্যন্ত। শেষ অশূন্য ভাগশেষ জেতে; LCM পরে।"
+      ),
+    },
+    sieve: {
+      overline: t("14 · Math — Phase 2", "১৪ · গণিত — ফেজ ২"),
+      title: "Math & Number Theory",
+      meta: t("strike multiples", "গুণিতক কাটো"),
+      intro: t(
+        "Take the next unmarked number — it's prime — and strike its multiples. Survivors are all prime.",
+        "পরের অকাটা সংখ্যা নাও — ওটা মৌলিক — গুণিতক কাটো। টিকে থাকারা সব মৌলিক।"
+      ),
+    },
+    "fast-exponentiation": {
+      overline: t("14 · Math — Phase 3", "১৪ · গণিত — ফেজ ৩"),
+      title: "Math & Number Theory",
+      meta: t("square per bit · O(log n)", "প্রতি বিটে বর্গ · O(log n)"),
+      intro: t(
+        "Read the exponent in binary: square the base every bit, multiply into the answer on 1s.",
+        "ঘাত বাইনারিতে পড়ো: প্রতি বিটে ভিত্তির বর্গ, 1-এ উত্তরে গুণ।"
+      ),
+    },
+    "pascals-triangle": {
+      overline: t("14 · Math — Phase 3", "১৪ · গণিত — ফেজ ৩"),
+      title: "Math & Number Theory",
+      meta: t("parents sum down", "বাবা-মা যোগে নামে"),
+      intro: t(
+        "Every inside cell adds its two parents. Row n spells the binomial coefficients C(n, k).",
+        "ভেতরের প্রতিটা ঘর দুই বাবা-মা যোগ করে। n-তম সারিতে দ্বিপদ সহগ C(n, k)।"
+      ),
+    },
+    "sparse-table": {
+      overline: t("15 · Advanced — Phase 4", "১৫ · অ্যাডভান্সড — ফেজ ৪"),
+      title: "Advanced",
+      meta: t("O(1) range min", "O(1) রেঞ্জ-min"),
+      intro: t(
+        "Precompute minimums of every power-of-two block. Any query is two overlapping blocks.",
+        "২-ঘাত ব্লকের minimum আগেই বের রাখো। যেকোনো জিজ্ঞাসা দুই ওভারল্যাপ ব্লক।"
+      ),
+    },
+    "convex-hull": {
+      overline: t("15 · Advanced — Phase 4", "১৫ · অ্যাডভান্সড — ফেজ ৪"),
+      title: "Advanced",
+      meta: t("left turns only", "শুধু বাম-ঘোরা"),
+      intro: t(
+        "Sort by angle around the lowest point, then walk: left turn pushes, right turn pops.",
+        "সর্বনিম্ন বিন্দু ঘিরে কোণে সাজাও, তারপর হাঁটো: বাম-ঘোরায় push, ডানে pop।"
+      ),
+    },
+    "ford-fulkerson": {
+      overline: t("15 · Advanced — Phase 4", "১৫ · অ্যাডভান্সড — ফেজ ৪"),
+      title: "Advanced",
+      meta: t("augment to min cut", "min cut পর্যন্ত বাড়াও"),
+      intro: t(
+        "Push flow along shortest residual paths until none remain. The cut left behind proves optimality.",
+        "সংক্ষিপ্ত residual পথে প্রবাহ ঠেলো, পথ শেষ না হওয়া পর্যন্ত। পেছনের cut সেরাত্ব প্রমাণ করে।"
+      ),
+    },
   } as Record<string, { overline: Text; title: string; meta: Text; intro: Text }>,
   common: {
     play: t("▶ Play", "▶ প্লে"),

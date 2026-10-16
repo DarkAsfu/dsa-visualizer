@@ -145,58 +145,58 @@ export const TOPIC_GROUPS: TopicGroup[] = [
   {
     title: "10. Dynamic Programming",
     topics: [
-      t("DP Intro", "dp-intro", "Memoization vs tabulation.", "Phase 3"),
-      t("Fibonacci DP", "fibonacci-dp", "Naive vs DP table.", "Phase 3"),
-      t("0/1 Knapsack", "knapsack", "Pick or skip table.", "Phase 3"),
-      t("LCS", "lcs", "Longest common subsequence grid.", "Phase 3"),
-      t("LIS", "lis", "Longest increasing subsequence.", "Phase 3"),
-      t("Edit Distance", "edit-distance", "Insert/delete/replace grid.", "Phase 3"),
-      t("Coin Change", "coin-change", "Min coins / ways.", "Phase 3"),
-      t("Subset Sum", "subset-sum", "Reachable sums table.", "Phase 3"),
-      t("Grid Paths", "grid-paths", "Unique paths, min path sum.", "Phase 3"),
+      t("DP Intro", "dp-intro", "Memoization vs tabulation.", "Phase 3", true),
+      t("Fibonacci DP", "fibonacci-dp", "Naive vs DP table.", "Phase 3", true),
+      t("0/1 Knapsack", "knapsack", "Pick or skip table.", "Phase 3", true),
+      t("LCS", "lcs", "Longest common subsequence grid.", "Phase 3", true),
+      t("LIS", "lis", "Longest increasing subsequence.", "Phase 3", true),
+      t("Edit Distance", "edit-distance", "Insert/delete/replace grid.", "Phase 3", true),
+      t("Coin Change", "coin-change", "Min coins / ways.", "Phase 3", true),
+      t("Subset Sum", "subset-sum", "Reachable sums table.", "Phase 3", true),
+      t("Grid Paths", "grid-paths", "Unique paths, min path sum.", "Phase 3", true),
     ],
   },
   {
     title: "11. Greedy",
     topics: [
-      t("Activity Selection", "activity-selection", "Earliest-finish greedy.", "Phase 3"),
-      t("Fractional Knapsack", "fractional-knapsack", "Value density greedy.", "Phase 3"),
-      t("Huffman Coding", "huffman-coding", "Prefix codes from frequencies.", "Phase 4"),
-      t("Merge Intervals", "merge-intervals", "Sort + sweep.", "Phase 2"),
+      t("Activity Selection", "activity-selection", "Earliest-finish greedy.", "Phase 3", true),
+      t("Fractional Knapsack", "fractional-knapsack", "Value density greedy.", "Phase 3", true),
+      t("Huffman Coding", "huffman-coding", "Prefix codes from frequencies.", "Phase 4", true),
+      t("Merge Intervals", "merge-intervals", "Sort + sweep.", "Phase 2", true),
     ],
   },
   {
     title: "12. Divide & Conquer",
     topics: [
-      t("Closest Pair of Points", "closest-pair", "Geometric divide & conquer.", "Phase 4"),
-      t("Karatsuba Multiplication", "karatsuba", "Fast big-int multiply.", "Phase 4"),
+      t("Closest Pair of Points", "closest-pair", "Geometric divide & conquer.", "Phase 4", true),
+      t("Karatsuba Multiplication", "karatsuba", "Fast big-int multiply.", "Phase 4", true),
     ],
   },
   {
     title: "13. Backtracking",
     topics: [
-      t("N-Queens", "n-queens", "Place queens safely.", "Phase 3"),
-      t("Sudoku Solver", "sudoku-solver", "Constraint propagation.", "Phase 3"),
-      t("Rat in a Maze", "rat-in-maze", "Path search + backtrack.", "Phase 3"),
-      t("Subsets & Permutations", "subsets-permutations", "Combinatorial generation.", "Phase 3"),
-      t("Word Search", "word-search", "Grid DFS with visited set.", "Phase 3"),
+      t("N-Queens", "n-queens", "Place queens safely.", "Phase 3", true),
+      t("Sudoku Solver", "sudoku-solver", "Constraint propagation.", "Phase 3", true),
+      t("Rat in a Maze", "rat-in-maze", "Path search + backtrack.", "Phase 3", true),
+      t("Subsets & Permutations", "subsets-permutations", "Combinatorial generation.", "Phase 3", true),
+      t("Word Search", "word-search", "Grid DFS with visited set.", "Phase 3", true),
     ],
   },
   {
     title: "14. Math & Number Theory",
     topics: [
-      t("GCD & LCM", "gcd-lcm", "Euclidean algorithm.", "Phase 2"),
-      t("Sieve of Eratosthenes", "sieve", "Prime generation.", "Phase 2"),
-      t("Fast Exponentiation", "fast-exponentiation", "Binary exponentiation.", "Phase 3"),
-      t("Pascal's Triangle", "pascals-triangle", "Combinatorics triangle.", "Phase 3"),
+      t("GCD & LCM", "gcd-lcm", "Euclidean algorithm.", "Phase 2", true),
+      t("Sieve of Eratosthenes", "sieve", "Prime generation.", "Phase 2", true),
+      t("Fast Exponentiation", "fast-exponentiation", "Binary exponentiation.", "Phase 3", true),
+      t("Pascal's Triangle", "pascals-triangle", "Combinatorics triangle.", "Phase 3", true),
     ],
   },
   {
     title: "15. Advanced",
     topics: [
-      t("Sparse Table", "sparse-table", "O(1) RMQ.", "Phase 4"),
-      t("Convex Hull", "convex-hull", "Graham scan.", "Phase 4"),
-      t("Network Flow", "ford-fulkerson", "Max flow min cut.", "Phase 4"),
+      t("Sparse Table", "sparse-table", "O(1) RMQ.", "Phase 4", true),
+      t("Convex Hull", "convex-hull", "Graham scan.", "Phase 4", true),
+      t("Network Flow", "ford-fulkerson", "Max flow min cut.", "Phase 4", true),
     ],
   },
 ];
@@ -208,7 +208,7 @@ export const ALL_TOPICS: Record<string, Topic> = Object.fromEntries(
 export const ALL_SLUGS: string[] = Object.keys(ALL_TOPICS);
 
 // Slugs that already have a dedicated static page (dynamic route must skip them)
-export const STATIC_SLUGS = new Set(["sorting", "data-structures", "graph", "complexity", "recursion", "backtracking-basics", "bit-manipulation", "linear-search", "binary-search", "jump-search", "interpolation-search", "exponential-search", "ternary-search", "array-ops", "two-pointers", "sliding-window", "stack", "queue", "prefix-sum", "kadane", "dutch-flag", "kmp", "rabin-karp", "z-algorithm", "palindrome-anagram", "bubble-sort", "selection-sort", "insertion-sort", "merge-sort", "quick-sort", "heap-sort", "counting-sort", "radix-sort", "bucket-sort", "shell-sort", "sorting-race", "singly-linked-list", "reverse-linked-list", "cycle-detection", "doubly-linked-list", "merge-sorted-lists", "linked-list-middle", "bfs", "dfs", "graph-representation", "dijkstra", "bellman-ford", "floyd-warshall", "topological-sort", "prims", "kruskals", "union-find", "cycle-detection-graph", "kosaraju", "bipartite-check", "astar", "flood-fill", "tree-traversals", "bst", "avl-tree", "heap-ds", "trie", "segment-tree", "fenwick-tree", "lca", "tree-diameter", "circular-queue", "monotonic-stack", "infix-postfix", "next-greater", "lru-cache", "hash-table", "hash-functions", "bloom-filter"]);
+export const STATIC_SLUGS = new Set(["sorting", "data-structures", "graph", "complexity", "recursion", "backtracking-basics", "bit-manipulation", "linear-search", "binary-search", "jump-search", "interpolation-search", "exponential-search", "ternary-search", "array-ops", "two-pointers", "sliding-window", "stack", "queue", "prefix-sum", "kadane", "dutch-flag", "kmp", "rabin-karp", "z-algorithm", "palindrome-anagram", "bubble-sort", "selection-sort", "insertion-sort", "merge-sort", "quick-sort", "heap-sort", "counting-sort", "radix-sort", "bucket-sort", "shell-sort", "sorting-race", "singly-linked-list", "reverse-linked-list", "cycle-detection", "doubly-linked-list", "merge-sorted-lists", "linked-list-middle", "bfs", "dfs", "graph-representation", "dijkstra", "bellman-ford", "floyd-warshall", "topological-sort", "prims", "kruskals", "union-find", "cycle-detection-graph", "kosaraju", "bipartite-check", "astar", "flood-fill", "tree-traversals", "bst", "avl-tree", "heap-ds", "trie", "segment-tree", "fenwick-tree", "lca", "tree-diameter", "circular-queue", "monotonic-stack", "infix-postfix", "next-greater", "lru-cache", "hash-table", "hash-functions", "bloom-filter", "dp-intro", "fibonacci-dp", "knapsack", "lcs", "lis", "edit-distance", "coin-change", "subset-sum", "grid-paths", "activity-selection", "fractional-knapsack", "huffman-coding", "merge-intervals", "closest-pair", "karatsuba", "n-queens", "sudoku-solver", "rat-in-maze", "subsets-permutations", "word-search", "gcd-lcm", "sieve", "fast-exponentiation", "pascals-triangle", "sparse-table", "convex-hull", "ford-fulkerson"]);
 
 export const TOTAL_TOPICS = ALL_SLUGS.length;
 export const READY_COUNT = Object.values(ALL_TOPICS).filter(

@@ -653,6 +653,249 @@ export const THEORY: Record<string, Theory> = {
       "More bits / tuned k → smaller error.",
     ],
   },
+  "dp-intro": {
+    name: "DP Intro",
+    blurb: "Never solve the same subproblem twice.",
+    points: [
+      "Overlapping subproblems → store answers in memo.",
+      "Top-down = recursion + memo; each state computed once.",
+      "fib(n) drops from O(2ⁿ) calls to O(n).",
+    ],
+  },
+  "fibonacci-dp": {
+    name: "Fibonacci DP",
+    blurb: "Bottom-up table beats the recursion tree.",
+    points: [
+      "dp[0]=0, dp[1]=1, then dp[i]=dp[i−1]+dp[i−2].",
+      "n−1 additions vs ~2ⁿ naive calls.",
+      "Only the last two values matter → O(1) space possible.",
+    ],
+  },
+  knapsack: {
+    name: "0/1 Knapsack",
+    blurb: "Pick or skip, capacity permitting.",
+    points: [
+      "dp[i][w] = best value with first i items, cap w.",
+      "Too heavy? skip. Else max(skip, take + v).",
+      "Walk back from dp[m][cap] to recover the items.",
+    ],
+  },
+  lcs: {
+    name: "LCS",
+    blurb: "Longest shared subsequence.",
+    points: [
+      "Match → diagonal + 1; mismatch → max(top, left).",
+      "Subsequence keeps order, not contiguity.",
+      "Backtrack from the corner collects the answer.",
+    ],
+  },
+  lis: {
+    name: "LIS",
+    blurb: "Longest strictly increasing run.",
+    points: [
+      "dp[i] = 1 + best dp[j] with j<i, a[j]<a[i].",
+      "Answer = max over dp, not dp[n−1].",
+      "O(n²) here; patience sorting reaches O(n log n).",
+    ],
+  },
+  "edit-distance": {
+    name: "Edit Distance",
+    blurb: "Cheapest way to rewrite a word.",
+    points: [
+      "Each cell = min(delete, insert, substitute).",
+      "Same letters cost 0 on the diagonal.",
+      "Backtrack spells one optimal edit script.",
+    ],
+  },
+  "coin-change": {
+    name: "Coin Change",
+    blurb: "Fewest coins per amount.",
+    points: [
+      "dp[0]=0, rest ∞; dp[amt]=1+min(dp[amt−c]).",
+      "Unreachable amounts stay ∞ — greedy would fail here.",
+      "O(amount × coins) time, O(amount) space.",
+    ],
+  },
+  "subset-sum": {
+    name: "Subset Sum",
+    blurb: "Can these numbers hit the target?",
+    points: [
+      "dp[i][s] = reachable using first i numbers?",
+      "skip: dp[i−1][s]; take: dp[i−1][s−x].",
+      "Pseudo-polynomial O(m·target) — target is a value, not size.",
+    ],
+  },
+  "grid-paths": {
+    name: "Grid Paths",
+    blurb: "Count right/down routes.",
+    points: [
+      "dp[r][c] = top + left; edges are all 1.",
+      "Combinatorial answer: C(R+C−2, R−1).",
+      "Obstacles? zero that cell — same recurrence.",
+    ],
+  },
+  "activity-selection": {
+    name: "Activity Selection",
+    blurb: "Most meetings in one room.",
+    points: [
+      "Sort by finish — earliest end leaves max room.",
+      "Pick it, drop conflicts, repeat: optimal.",
+      "Sorting dominates: O(n log n).",
+    ],
+  },
+  "fractional-knapsack": {
+    name: "Fractional Knapsack",
+    blurb: "Density first, fractions allowed.",
+    points: [
+      "Sort by v/w; take whole, then a slice.",
+      "Greedy is optimal here — unlike 0/1.",
+      "The fraction step is why 0/1 needs DP.",
+    ],
+  },
+  "huffman-coding": {
+    name: "Huffman Coding",
+    blurb: "Short codes for frequent letters.",
+    points: [
+      "Merge the two smallest frequencies, repeat.",
+      "Left=0, right=1 down the tree gives codes.",
+      "Prefix-free: no code starts another — optimal.",
+    ],
+  },
+  "merge-intervals": {
+    name: "Merge Intervals",
+    blurb: "Fuse every overlap in one sweep.",
+    points: [
+      "Sort by start; keep one running interval.",
+      "Next starts ≤ end? extend. Else push + move.",
+      "O(n log n) sort, O(n) sweep.",
+    ],
+  },
+  "closest-pair": {
+    name: "Closest Pair",
+    blurb: "Nearest points, divide and conquer.",
+    points: [
+      "Sort by x, split mid, recurse both halves.",
+      "Strip holds points within δ of mid, sorted by y.",
+      "Each strip point checks ≤7 neighbors: O(n log n).",
+    ],
+  },
+  karatsuba: {
+    name: "Karatsuba",
+    blurb: "Multiply with 3 half-products.",
+    points: [
+      "x·y = z2·10²ᵐ + z1·10ᵐ + z0 with one clever z1.",
+      "z1 = (xh+xl)(yh+yl) − z2 − z0 saves a multiply.",
+      "O(n^1.585) beats grade-school O(n²).",
+    ],
+  },
+  "n-queens": {
+    name: "N-Queens",
+    blurb: "One queen per row, none attacking.",
+    points: [
+      "Try columns left to right in each row.",
+      "Conflict? skip — the attackers light up.",
+      "Dead row? remove last queen, continue.",
+    ],
+  },
+  "sudoku-solver": {
+    name: "Sudoku Solver",
+    blurb: "Fill the most constrained cell.",
+    points: [
+      "MRV: fewest candidates goes first.",
+      "Place → recurse; empty candidates → erase.",
+      "Easy boards solve in tens of steps.",
+    ],
+  },
+  "rat-in-maze": {
+    name: "Rat in a Maze",
+    blurb: "DFS with undo, count routes.",
+    points: [
+      "Step into free, unseen cells only.",
+      "Dead end? unvisit and step back.",
+      "Reaching E records one full path.",
+    ],
+  },
+  "subsets-permutations": {
+    name: "Subsets & Permutations",
+    blurb: "Two classic choice trees.",
+    points: [
+      "Subsets: per element, take or skip → 2ⁿ leaves.",
+      "Perms: per position, try each leftover → n! leaves.",
+      "Undo after recursing — same pattern both times.",
+    ],
+  },
+  "word-search": {
+    name: "Word Search",
+    blurb: "Chase letters through the grid.",
+    points: [
+      "Start DFS at every first-letter cell.",
+      "Match advances, mismatch backtracks.",
+      "Visited set stops reuse of a cell.",
+    ],
+  },
+  "gcd-lcm": {
+    name: "GCD & LCM",
+    blurb: "Euclid in a few remainders.",
+    points: [
+      "gcd(a,b) = gcd(b, a mod b).",
+      "Remainders shrink fast — O(log min).",
+      "lcm = a / gcd × b (divide first!).",
+    ],
+  },
+  sieve: {
+    name: "Sieve",
+    blurb: "Cross out composites.",
+    points: [
+      "Next unmarked number is prime.",
+      "Start striking at p² — smaller hits done.",
+      "O(n log log n), nearly linear.",
+    ],
+  },
+  "fast-exponentiation": {
+    name: "Fast Exponentiation",
+    blurb: "Powers in log steps.",
+    points: [
+      "Square the base per exponent bit.",
+      "Multiply into res only on 1-bits.",
+      "x¹³ = x⁸·x⁴·x¹ — three mults, not twelve.",
+    ],
+  },
+  "pascals-triangle": {
+    name: "Pascal's Triangle",
+    blurb: "Combinations, addition-built.",
+    points: [
+      "Inside cell = two parents above.",
+      "Row n lists C(n,0)..C(n,n).",
+      "Diagonals hide Fibonacci and powers of 2.",
+    ],
+  },
+  "sparse-table": {
+    name: "Sparse Table",
+    blurb: "Idempotent queries in O(1).",
+    points: [
+      "st[k][i] = min over 2ᵏ from i.",
+      "Build O(n log n) by doubling.",
+      "Query: two overlapping blocks cover [l,r].",
+    ],
+  },
+  "convex-hull": {
+    name: "Convex Hull",
+    blurb: "Rubber band around points.",
+    points: [
+      "Pivot = lowest point; sort rest by angle.",
+      "Cross ≤ 0? pop — that turn is wrong.",
+      "Stack survivors are the hull, in order.",
+    ],
+  },
+  "ford-fulkerson": {
+    name: "Ford-Fulkerson",
+    blurb: "Push until no path remains.",
+    points: [
+      "BFS finds shortest residual path.",
+      "Bottleneck limits the push.",
+      "No path ⇒ flow maximal, cut minimal.",
+    ],
+  },
 };
 
 export const THEORY_BN: Record<string, { blurb: string; points: string[] }> = {
@@ -1230,6 +1473,222 @@ export const THEORY_BN: Record<string, { blurb: string; points: string[] }> = {
       "m বিট, k হ্যাশ, key রাখে না।",
       "ভুল-নেতি নেই, কিছু ভুল-পজিটিভ।",
       "বেশি বিট / ঠিক k → কম ভুল।",
+    ],
+  },
+  "dp-intro": {
+    blurb: "একই সাবপ্রবলেম দুবার সমাধান নয়।",
+    points: [
+      "মিল-সাবপ্রবলেম → উত্তর memo-তে রাখো।",
+      "টপ-ডাউন = রিকার্শন + memo; প্রতি state একবার।",
+      "fib(n) O(2ⁿ) থেকে O(n) কলে নামে।",
+    ],
+  },
+  "fibonacci-dp": {
+    blurb: "নিচ-থেকে টেবিল রিকার্শন-গাছকে হারায়।",
+    points: [
+      "dp[0]=0, dp[1]=1, তারপর dp[i]=dp[i−1]+dp[i−2]।",
+      "n−1 যোগ বনাম ~2ⁿ naive কল।",
+      "শেষ দুটো মানই যথেষ্ট → O(1) জায়গা সম্ভব।",
+    ],
+  },
+  knapsack: {
+    blurb: "নাও বা বাদ, ধারণক্ষমতা মেনে।",
+    points: [
+      "dp[i][w] = প্রথম i জিনিসে cap w-তে সেরা মান।",
+      "ভারী? বাদ। নইলে max(বাদ, নাও + v)।",
+      "dp[m][cap] থেকে ফিরে জিনিস বের করো।",
+    ],
+  },
+  lcs: {
+    blurb: "দীর্ঘতম ভাগ-সাবসিকোয়েন্স।",
+    points: [
+      "মিল → কর্ণ + ১; অমিল → max(উপর, বাম)।",
+      "সাবসিকোয়েন্স ক্রম রাখে, লাগোয়া নয়।",
+      "কোণা থেকে ফিরলে উত্তর মেলে।",
+    ],
+  },
+  lis: {
+    blurb: "দীর্ঘতম বাড়ন্ত ধারা।",
+    points: [
+      "dp[i] = 1 + সেরা dp[j], যেখানে j<i, a[j]<a[i]।",
+      "উত্তর dp-এর max, dp[n−1] নয়।",
+      "এখানে O(n²); patience sorting O(n log n) দেয়।",
+    ],
+  },
+  "edit-distance": {
+    blurb: "শব্দ বদলের সস্তা উপায়।",
+    points: [
+      "প্রতি ঘর = min(মোছা, ঢোকানো, বদলানো)।",
+      "একই অক্ষর কর্ণে খরচ ০।",
+      "ফিরতি পথে এক সেরা এডিট-স্ক্রিপ্ট মেলে।",
+    ],
+  },
+  "coin-change": {
+    blurb: "প্রতি অঙ্কে কম কয়েন।",
+    points: [
+      "dp[0]=0, বাকি ∞; dp[amt]=1+min(dp[amt−c])।",
+      "অসম্ভব অঙ্ক ∞ থাকে — greedy এখানে ফেল করে।",
+      "O(amount × coins) সময়, O(amount) জায়গা।",
+    ],
+  },
+  "subset-sum": {
+    blurb: "এই সংখ্যায় টার্গেট মেলে?",
+    points: [
+      "dp[i][s] = প্রথম i সংখ্যায় সম্ভব?",
+      "বাদ: dp[i−1][s]; নাও: dp[i−1][s−x]।",
+      "O(m·target) — target মান, সাইজ নয়।",
+    ],
+  },
+  "grid-paths": {
+    blurb: "ডান/নিচ পথ গোনো।",
+    points: [
+      "dp[r][c] = উপর + বাম; কিনারা সব ১।",
+      "গণিত-উত্তর: C(R+C−2, R−1)।",
+      "বাধা? সেই ঘর শূন্য — একই সূত্র।",
+    ],
+  },
+  "activity-selection": {
+    blurb: "এক ঘরে সবচেয়ে বেশি মিটিং।",
+    points: [
+      "শেষ-সময় ধরে সাজাও — আগে শেষে জায়গা বেশি।",
+      "নাও, সংঘাত বাদ, পুনরাবৃত্তি: সেরা।",
+      "সাজানোই ভারী: O(n log n)।",
+    ],
+  },
+  "fractional-knapsack": {
+    blurb: "ঘনত্ব আগে, ভগ্নাংশ চলে।",
+    points: [
+      "v/w ধরে সাজাও; পুরো নাও, তারপর টুকরো।",
+      "এখানে greedy সেরা — 0/1-এ নয়।",
+      "ভগ্নাংশ-ধাপই 0/1-এ DP লাগার কারণ।",
+    ],
+  },
+  "huffman-coding": {
+    blurb: "ঘন অক্ষরে ছোট কোড।",
+    points: [
+      "ক্ষুদ্রতম দুই ফ্রিকোয়েন্সি জোড়া দাও, বারবার।",
+      "গাছে বাম=0, ডান=1 নামলেই কোড।",
+      "প্রিফিক্স-মুক্ত: কোনো কোড আরেকটার শুরু নয় — সেরা।",
+    ],
+  },
+  "merge-intervals": {
+    blurb: "এক ঝাঁটায় সব মিল জোড়া।",
+    points: [
+      "শুরু ধরে সাজাও; এক চলমান ব্যবধান রাখো।",
+      "পরের শুরু ≤ শেষ? বাড়াও। নইলে রাখো + এগোও।",
+      "O(n log n) সাজানো, O(n) ঝাঁটা।",
+    ],
+  },
+  "closest-pair": {
+    blurb: "নিকটতম বিন্দু, ভাগ-জয়।",
+    points: [
+      "x ধরে সাজাও, মাঝে ভাগ, দুই অর্ধেক জয়।",
+      "স্ট্রিপে mid-এর δ ভেতরের পয়েন্ট, y-ধরে।",
+      "প্রতি স্ট্রিপ-পয়েন্ট ≤৭ প্রতিবেশী দেখে: O(n log n)।",
+    ],
+  },
+  karatsuba: {
+    blurb: "৩ অর্ধ-গুণে গুণ।",
+    points: [
+      "x·y = z2·10²ᵐ + z1·10ᵐ + z0, চালাক z1 সহ।",
+      "z1 = (xh+xl)(yh+yl) − z2 − z0 এক গুণ বাঁচায়।",
+      "O(n^1.585) স্কুল-নিয়ম O(n²)-কে হারায়।",
+    ],
+  },
+  "n-queens": {
+    blurb: "প্রতি সারিতে এক কুইন, আক্রমণহীন।",
+    points: [
+      "প্রতি সারিতে বাম-থেকে-ডান কলাম চেষ্টা।",
+      "সংঘাত? বাদ — আক্রমণকারী জ্বলে।",
+      "সারি শেষ? শেষ কুইন সরিয়ে চালিয়ে যাও।",
+    ],
+  },
+  "sudoku-solver": {
+    blurb: "সবচেয়ে বাঁধা ঘর আগে ভরো।",
+    points: [
+      "MRV: কম প্রার্থীর ঘর আগে।",
+      "বসাও → recurse; প্রার্থী শেষ → মোছো।",
+      "সহজ বোর্ড কয়েক ডজন ধাপে মেলে।",
+    ],
+  },
+  "rat-in-maze": {
+    blurb: "undo-সহ DFS, পথ গোনো।",
+    points: [
+      "শুধু খালি, অদেখা ঘরে ঢোকো।",
+      "dead end? unvisit করে ফেরো।",
+      "E-তে পৌঁছানো এক পূর্ণ পথ।",
+    ],
+  },
+  "subsets-permutations": {
+    blurb: "দুই ক্লাসিক choice-গাছ।",
+    points: [
+      "সাবসেট: প্রতি মানে নাও/বাদ → 2ⁿ পাতা।",
+      "বিন্যাস: প্রতি ঘরে বাকি সব → n! পাতা।",
+      "recurse-এর পর undo — দুটোতেই এক প্যাটার্ন।",
+    ],
+  },
+  "word-search": {
+    blurb: "গ্রিডে অক্ষর তাড়া করো।",
+    points: [
+      "প্রতি প্রথম-অক্ষর থেকে DFS শুরু।",
+      "মিলে এগোও, অমিলে ব্যাকট্র্যাক।",
+      "visited সেট ঘর-পুনর্ব্যবহার ঠেকায়।",
+    ],
+  },
+  "gcd-lcm": {
+    blurb: "কয়েক ভাগশেষে ইউক্লিড।",
+    points: [
+      "gcd(a,b) = gcd(b, a mod b)।",
+      "ভাগশেষ দ্রুত ছোটে — O(log min)।",
+      "lcm = a / gcd × b (আগে ভাগ!)।",
+    ],
+  },
+  sieve: {
+    blurb: "যৌগিক কাটো।",
+    points: [
+      "পরের অকাটা সংখ্যাই মৌলিক।",
+      "p² থেকে কাটা শুরু — ছোটগুলো শেষ।",
+      "O(n log log n), প্রায় রৈখিক।",
+    ],
+  },
+  "fast-exponentiation": {
+    blurb: "log ধাপে ঘাত।",
+    points: [
+      "প্রতি ঘাত-বিটে ভিত্তির বর্গ।",
+      "শুধু 1-বিটে উত্তরে গুণ।",
+      "x¹³ = x⁸·x⁴·x¹ — বারো নয়, তিন গুণ।",
+    ],
+  },
+  "pascals-triangle": {
+    blurb: "যোগে-গড়া সমাবেশ।",
+    points: [
+      "ভেতরের ঘর = উপরের দুই বাবা-মা।",
+      "n-তম সারিতে C(n,0)..C(n,n)।",
+      "কর্ণে ফিবোনাচ্চি আর ২-ঘাত লুকিয়ে।",
+    ],
+  },
+  "sparse-table": {
+    blurb: "O(1)-এ idempotent জিজ্ঞাসা।",
+    points: [
+      "st[k][i] = i থেকে 2ᵏ-এর min।",
+      "দ্বিগুণে বানাও O(n log n)।",
+      "জিজ্ঞাসা: [l,r] ঢাকে দুই ওভারল্যাপ ব্লক।",
+    ],
+  },
+  "convex-hull": {
+    blurb: "বিন্দু ঘিরে রাবার-ব্যান্ড।",
+    points: [
+      "pivot = সর্বনিম্ন; বাকি কোণে সাজাও।",
+      "Cross ≤ 0? pop — ঘোরা ভুল।",
+      "টিকে থাকা স্ট্যাকই ক্রমে hull।",
+    ],
+  },
+  "ford-fulkerson": {
+    blurb: "পথ শেষ না হওয়া পর্যন্ত ঠেলো।",
+    points: [
+      "BFS সংক্ষিপ্ত residual পথ বের করে।",
+      "neck ঠেলা সীমাবদ্ধ করে।",
+      "পথ নেই ⇒ প্রবাহ সর্বোচ্চ, cut সর্বনিম্ন।",
     ],
   },
 };
